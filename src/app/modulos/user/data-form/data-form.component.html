@@ -1,0 +1,175 @@
+<div class="container col-sm-12">
+
+
+  <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img  src="http://evolutioninformatica.com.br/img/logo_evolution.png" width="170" height="60" alt="">
+  </a>
+
+
+</nav>
+<p class="cadastro">CADASTRO DA EMPRESA</p>
+  <form [formGroup]="formulario" (ngSubmit)="createUser(formulario)">
+
+    <div class="row">
+      <!--RAZÃO SOCIAL DA EMPRESA-->
+      <div class="form-group col-sm-4" [ngClass]="aplicaCssErro('razao')">
+        <label for="razao" class="control-label">RAZÃO SOCIAL</label>
+        <input  type="text" class="form-control" formControlName="razao" id="razao" placeholder="Insira sua Razão Social">
+        <app-error-msg [control]="formulario.get('razao')" label="Razão Social"></app-error-msg>
+      </div>
+
+
+      <!--NOME FANTASIA-->
+      <div class="form-group col-sm-4" [ngClass]="aplicaCssErro('fantasia')">
+        <label for="fantasia" class="control-label">NOME FANTASIA</label>
+        <input type="text" class="form-control" formControlName="fantasia" id="fantasia"
+          placeholder="Insira o nome fantasia da Empresa">
+          <app-error-msg [control]="formulario.get('fantasia')" label="O Nome Fantasia"></app-error-msg>
+      </div>
+
+      <!--CNPJ-->
+      <div class="form-group col-sm-4" [ngClass]="aplicaCssErro('cnpj')">
+        <label for="cnpj" class="control-label">CNPJ</label>
+        <input type="text" maxlength="18" class="form-control" formControlName="cnpj" id="cnpj" placeholder="XX.XXX.XXX/XXXY-YY">
+        <app-error-msg [control]="formulario.get('cnpj')" label="O CNPJ"></app-error-msg>
+
+        <app-compo-control-erro [mostrarErro]="verificaCnpjInvalido()" msgErro="O CNPJ inválido">
+        </app-compo-control-erro>
+      </div>
+
+      <!--NOME DO REPRESENTANTE-->
+      <div class="form-group col-sm-4" [ngClass]="aplicaCssErro('nome')">
+        <label for="nome" class="control-label">NOME DO RESPONSÁVEL</label>
+        <input type="text" class="form-control" formControlName="nome" id="nome" placeholder="Insira seu nome">
+        <app-error-msg [control]="formulario.get('nome')" label="O Nome do Responsável"></app-error-msg>
+      </div>
+      <!--EMAIL-->
+
+      <div class="form-group col-sm-4" [ngClass]="aplicaCssErro('email')">
+        <label for="email" class="control-label">E-MAIL</label>
+        <input type="email" class="form-control" formControlName="email" id="email"
+          placeholder="suporte@evolutioninformatica.com.br">
+
+        <app-error-msg [control]="formulario.get('email')" label="O E-mail"></app-error-msg>
+        <app-compo-control-erro [mostrarErro]="verificaEmailInvalido()" msgErro="E-mail inválido">
+        </app-compo-control-erro>
+
+
+        <app-compo-control-erro [mostrarErro]="formulario.get('email').status === 'PENDING'" msgErro="Válidando E-mail...">
+        </app-compo-control-erro>
+
+        <app-compo-control-erro [mostrarErro]="formulario.get('email').status === 'VALID'" msgErro="E-mail válido!">
+        </app-compo-control-erro>
+
+        <app-compo-control-erro [mostrarErro]="formulario.get('email').hasError('emailInvalido')" msgErro="E-mail já cadastrado!">
+        </app-compo-control-erro>
+
+      </div>
+      <!--SENHA-->
+
+      <div class="form-group col-sm-2" [ngClass]="aplicaCssErro('password')">
+        <label for="password" class="control-label">SENHA</label>
+        <input type="password" maxlength="8" class="form-control" formControlName="password" id="password" placeholder="Evo@info2530">
+        <app-compo-control-erro [mostrarErro]="verificaValidTouched('password')" msgErro="A Senha é Obrigaório">
+        </app-compo-control-erro>
+      </div>
+      <!--TOKEN-->
+      <div class="form-group col-sm-2" [ngClass]="aplicaCssErro('token')">
+        <label for="token" class="control-label">TOKEN</label>
+        <input type="password" maxlength="8" class="form-control" formControlName="token" id="token" placeholder="#230Evo!101">
+        <app-compo-control-erro [mostrarErro]="verificaValidTouched('token')" msgErro="O TOKEN é Obrigaório">
+        </app-compo-control-erro>
+      </div>
+
+    </div>
+    <!--AQUI COMEÇA A API DO CEP-->
+
+    <div formGroupName="endereco">
+      <div class="row">
+        <!--CEP-->
+        <div class="form-group col-md-2" [ngClass]="aplicaCssErro('endereco.cep')">
+          <label for="cep" class="control-label">CEP</label>
+          <input type="cep"  class="form-control" id="cep" formControlName="cep"  placeholder="Insira o Cep">
+
+          <app-compo-control-erro [mostrarErro]="verificaValidRequired('endereco.cep')" msgErro="O CEP é Obrigaório">
+          </app-compo-control-erro>
+
+          <app-compo-control-erro [mostrarErro]="formulario.get('endereco.cep').hasError('cepInvalido')" msgErro="O CEP é Inválido">
+          </app-compo-control-erro>
+
+        </div>
+        <!--RUA-->
+
+        <div class="form-group col-md-2" [ngClass]="aplicaCssErro('endereco.rua')">
+          <label for="rua" class="control-label">RUA</label>
+          <input type="rua" class="form-control" formControlName="rua" id="cep" placeholder="Nome da Rua">
+
+          <app-compo-control-erro [mostrarErro]="verificaValidTouched('endereco.rua')" msgErro="A Rua é Obrigaório">
+          </app-compo-control-erro>
+
+        </div>
+
+        <!--BAIRRO-->
+        <div class="form-group col-md-2" [ngClass]="aplicaCssErro('endereco.bairro')">
+          <label for="bairro" class="control-label">BAIRRO</label>
+          <input type="bairro" class="form-control" formControlName="bairro" id="bairro" placeholder="Bairro">
+
+          <app-compo-control-erro [mostrarErro]="verificaValidTouched('endereco.bairro')" msgErro="O Bairro Obrigaório">
+          </app-compo-control-erro>
+
+        </div>
+        <!--NUMERO-->
+        <div class="form-group col-md-2" [ngClass]="aplicaCssErro('endereco.rua')">
+          <label for="num" class="control-label">NÚMERO</label>
+          <input type="num" maxlength="5" class="form-control" formControlName="num" id="num" placeholder="Número">
+
+          <app-compo-control-erro [mostrarErro]="verificaValidTouched('endereco.num')" msgErro="O Número Obrigaório">
+          </app-compo-control-erro>
+
+        </div>
+        <!--CIDADE-->
+        <div class="form-group col-md-2 mr-" [ngClass]="aplicaCssErro('endereco.cidade')">
+          <label for="cidade" class="control-label">CIDADE</label>
+         <select class="form-control" id="cidade" formControlName="cidade">
+           <option *ngFor="let cidade of cidades" [value]="cidade.nome">{{ cidade.nome }}</option>
+         </select>
+
+         <app-error-msg [control]="formulario.get('endereco.cidade')" label="Cidade"></app-error-msg>
+        </div>
+
+          <!--ESTADOS-->
+        <div class="form-group col-md-2 mr-" [ngClass]="aplicaCssErro('endereco.estado')">
+          <label for="estado" class="control-label">ESTADO</label>
+         <select class="form-control" id="estado" formControlName="estado">
+           <option *ngFor="let estado of estados " [value]="estado.sigla">{{estado.nome}}</option>
+
+         </select>
+
+          <app-compo-control-erro [mostrarErro]="verificaValidTouched('endereco.estado')" msgErro="O Estado é Obrigaório">
+          </app-compo-control-erro>
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <!--AQUI TERMINA O CEP-->
+
+    <div class="row">
+      <div class="button">
+        <button type="submit" class="btn btn-primary mr-2 ">CADASTRAR</button>
+
+        <a href="#" class="btn btn-danger btn-custom">
+          <span class="glyphicon glyphicon-ok img-circle text-primary btn-icon"></span>
+          VOLTAR
+          </a>
+
+
+      </div>
+    </div>
+  </form>
+
+</div>

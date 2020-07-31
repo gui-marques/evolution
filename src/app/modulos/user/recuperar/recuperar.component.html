@@ -1,0 +1,56 @@
+<body class="form-v4">
+	<div class="page-content">
+		<div class="form-v4-content">
+			<div class="form-left">
+				<h2>INFORMAÇÃO</h2>
+				<p class="text-1">Para cadastro de senha, informe o E-mail pré-cadastrado na nossa Matriz Evolution Informatica.</p>
+				<p class="text-2"><span>Lembrete</span> Para realizar o cadastramento da senha, você precisa ter preenchido 100% do cadastro!</p>
+				<div class="form-left-last">
+          <a href="#" class="account">
+            <input type="submit" name="account" class="account" value="Já tenho um Login e senha">
+            </a>
+				</div>
+			</div>
+			<form #userRegForm="ngForm" class="form-detail" (ngSubmit)="createUser(userRegForm)">
+				<h2>REGISTRAR SENHA</h2>
+				<div class="form-group">
+					<div class="form-row form-row-1">
+						<label for="cnpj">CNPJ</label>
+            <input ngModel #cnpj="ngModel" type="text" name="cnpj" id="cnpj" class="input-text" required>
+
+          </div>
+
+
+					<div class="form-row form-row-1">
+						<label for="nome">Nome</label>
+            <input ngModel #nome="ngModel" type="text" name="nome" id="nome" class="input-text">
+
+					</div>
+				</div>
+				<div class="form-row">
+					<label for="email">E-mail</label>
+					<input ngModel #email="ngModel" type="email" name="email" id="email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+				</div>
+				<div class="form-group">
+					<div class="form-row form-row-1 ">
+						<label for="password">Senha</label>
+						<input type="password" name="password" id="password" class="input-text" required>
+					</div>
+					<div class="form-row form-row-1">
+						<label >Confirmar senha</label>
+						<input ngModel #password="ngModel" type="password" name="password" class="input-text" required>
+					</div>
+				</div>
+				<div class="form-checkbox">
+					<label class="container"><p>Eu concordo <a href="#" class="text">com o termo e com as condições</a></p>
+					  	<input type="checkbox" name="checkbox">
+					  	<span class="checkmark"></span>
+					</label>
+        </div>
+
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Register">
+				</div>
+			</form>
+		</div>
+	</div>

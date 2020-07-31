@@ -1,0 +1,45 @@
+ <!-- Main Header -->
+
+ <app-starter-header></app-starter-header>
+ <!-- Left side column. contains the logo and sidebar -->
+ <app-starter-left-side></app-starter-left-side>
+
+ <!-- Content Wrapper. Contains page content -->
+ <form #userRegForm="ngForm" class="content-wrapper" (ngSubmit)="onAddUser()">
+ <div  class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="form-group">
+      <h3>Selecione a imagem</h3>
+      <input type="file" accept=".png, .jpg, .jpeg" (change)="onUpload($event)">
+    </div>
+    <hr>
+    <div class="progress">
+      <div class="ion-progress-bar progress-bar-striped bg-sucess" role="progressbar"
+       [style.widith]="(uploadPercent |async)  + '%'"></div>
+    </div>
+    <br>
+    <input #imageUser type="hidden" [value]="urlImage | async">
+    <button *ngIf="urlImage |async; else btnDisabled" type="submit" class="btn btn-secondary btn-block">Salvar</button>
+    <ng-template #btnDisabled>
+      <button type="submit" disabled=true class="btn btn-lg btn-primary btn-block">Salvar</button>
+|
+</ng-template>
+  </section>
+
+
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+ <!-- /.content-wrapper -->
+ <!-- Main Footer -->
+ <app-starter-footer></app-starter-footer>
+
+ <!-- Control Sidebar -->
+ <app-starter-control-side></app-starter-control-side>
+ <!-- /.control-sidebar -->
+ <!-- Add the sidebar's background. This div must be placed
+      immediately after the control sidebar -->
+ </form>

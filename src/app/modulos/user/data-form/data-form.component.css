@@ -1,0 +1,59 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  /*display: flex;
+  flex-wrap: wrap; */
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  background: #e1e1e1;
+  /*background: -webkit-linear-gradient(-135deg, #f7f6f3, #f7f6f3);
+  background: -o-linear-gradient(-135deg, #f7f6f3, #f7f6f3);
+  background: -moz-linear-gradient(-135deg, #f7f6f3, #f7f6f3);
+  background: linear-gradient(-135deg, #1db9f1, #f7f6f3);*/
+}
+
+.cadastro {
+  position: absolute;
+  left: 48rem;
+  top: 15rem;
+  font-weight: bold;
+  font-size: 40px;
+
+}
+.form-group {
+  position: relative;
+  top: 10rem;
+
+
+}
+.form-control{
+  border-radius: 15;
+  font-weight: bold;
+  color: #4b4d4b;
+
+}
+.control-label{
+  position: relative;
+  font-weight: bold;
+  font-size: 13px;
+  left: 1rem;
+
+
+
+}
+.button{
+  position: relative;
+  top: 15rem;
+  left: 53rem;
+}
+::-webkit-input-placeholder {
+  color: #a1a6a7;
+
+}
+
+

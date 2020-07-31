@@ -1,0 +1,62 @@
+<div class="limiter" >
+  <div class="container-login100">
+    <div class="login100" >
+      <form class="login100-form" (submit)="onLogin()">
+        <!-- Foto da pessoa Buscar no banco-->
+
+        <div class="login100-pic js-tilt" data-tilt>
+          <img class="imgevo" src="http://evolutioninformatica.com.br/img/logo_evolution.png" alt="IMG">
+        </div>
+        <!-- Digitar o Login -->
+
+        <div class="wrap-input100 validate-input" >
+          <input  class="input100" [(ngModel)]="email" type="email" name="registername" placeholder="Login">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <!-- Digitar a senha -->
+
+        <div class="wrap-input100 validate-input" data-validate = "Password is required">
+          <input class="input100" [(ngModel)]="password" type="password" name="registerpass" placeholder="Senha">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+        <!--Lembrar Login e senha-->
+
+        <!-- Botão de Login -->
+
+        <div class="container-login100-form-btn" name="logar">
+          <button type="submit" class="btn btn-primary btn-lg btn-block">
+            Login
+          </button>
+        </div>
+        <div clas icons>
+        <a [routerLink]="'/criar-senha'" class="ion ion-person-add"> Criar Senha</a>
+        </div>
+
+        <!-- Icones facebook, Instagram, Whatsapp -->
+
+      <div class="icon">
+           <a class="icon-face" href="https://www.facebook.com/evolutiontecnologiaoficial" target="_blank">
+            <i class=" fa fa-facebook-square"></i></a>
+
+
+            <a class="icon-insta" href="https://www.instagram.com/evolutiongtba/" target="_blank">
+            <i class="fa fa-instagram"></i>
+          </a>
+
+          <a class="icon-wpp" href="https://api.whatsapp.com/send?phone=5541998820199&text=Evolution%20Informatica" target="_blank">
+           <i class="fa fa fa-whatsapp"></i>
+        </a>
+
+
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

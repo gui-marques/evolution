@@ -1,0 +1,36 @@
+.navbar-static-top{
+ height: 40px;
+}
+
+
+a.sidebar-toggle{
+  color: rgb(3, 0, 1);
+  position: relative;
+  left: -35.5rem;
+  top: -3.9rem;
+  font-size: 180%;
+
+}
+.nav.navbar-nav{
+  width: 37%;
+
+  display: inline-block;
+  margin-right: -38vw;
+  font-size: 1.1vw;
+  text-align: center;
+  padding: 5vw 0vw 5vw 0vw;
+  min-width:40vw;
+  margin-top: -5.5vw;
+}
+.dropdown-menu{
+  font-size: 1.2vw;
+}
+.user-footer{
+  font-size: 1.2vw;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.pull-right:hover{
+  color: blue;
+}
+
+
